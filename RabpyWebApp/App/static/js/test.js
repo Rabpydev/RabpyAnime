@@ -1,0 +1,1 @@
+window.alert("test.js is connected!!")
