@@ -11,6 +11,10 @@
     {% block title %}
     {% endblock %}
 
+    <!-- DataTables.net CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 
@@ -20,96 +24,101 @@
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
 
+    <!-- DataTables.net JS -->
+    <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+    <script defer src="{% static 'js/rabpycustom.js' %}"></script>
   </head>
 
-<body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="/" class="logo">
-                        <img src="{% static 'images/logo-rabpy.png' %}" alt="" style="width: 158px;">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      {% if page == "home" %}
-                        <li><a href="/" class="active">Home</a></li>
-                      {% else %}
-                        <li><a href="/">Home</a></li>
-                      {% endif %}
-                      
-                      <li><a href="#">Manga</a></li>
-
-                      {% if page == "anime" %}
-                        <li><a href="/anime" class="active">Anime</a></li>
-                      {% else %}
-                        <li><a href="/anime">Anime</a></li>
-                      {% endif %}
-                    
-                      {% if page == "character" %}
-                        <li><a href="/character" class="active">Character</a></li>
-                      {% else %}
-                        <li><a href="/character">Character</a></li>
-                      {% endif %}
-
-                      {% if page == "contact" %}
-                        <li><a href="/contact" class="active">Contact Us</a></li>
-                      {% else %}
-                        <li><a href="/contact">Contact Us</a></li>
-                      {% endif %}
-
-                      <li><a href="/admin/">Login</a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
+  <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-
-
-  {% block content %}
-  {% endblock %}
-
-
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2024 Rabpy GoodName Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="/" target="_blank">Design: TemplateMo</a></p>
       </div>
     </div>
-  </footer>
+    <!-- ***** Preloader End ***** -->
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/isotope.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/js/owl-carousel.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/counter.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="/" class="logo">
+                          <img src="{% static 'images/logo-rabpy.png' %}" alt="" style="width: 158px;">
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                        {% if page == "home" %}
+                          <li><a href="/" class="active">Home</a></li>
+                        {% else %}
+                          <li><a href="/">Home</a></li>
+                        {% endif %}
+                        
+                        <li><a href="#">Manga</a></li>
+
+                        {% if page == "anime" %}
+                          <li><a href="/anime" class="active">Anime</a></li>
+                        {% else %}
+                          <li><a href="/anime">Anime</a></li>
+                        {% endif %}
+                      
+                        {% if page == "character" %}
+                          <li><a href="/character" class="active">Character</a></li>
+                        {% else %}
+                          <li><a href="/character">Character</a></li>
+                        {% endif %}
+
+                        {% if page == "contact" %}
+                          <li><a href="/contact" class="active">Contact Us</a></li>
+                        {% else %}
+                          <li><a href="/contact">Contact Us</a></li>
+                        {% endif %}
+
+                        <li><a href="/admin/">Login</a></li>
+                      </ul>   
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer>
+      <div class="container">
+        <div class="col-lg-12">
+          <p>Copyright © 2024 Rabpy GoodName Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="/" target="_blank">Design: TemplateMo</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/isotope.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/js/owl-carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/counter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
 
   </body>
 </html>
