@@ -1,0 +1,26 @@
+/* Anime page, Main character section */
+.card {
+    background-color: transparent;
+}
+
+.card-body {
+    position: relative;
+    height: 350px;
+}
+
+.card-img-top {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.card-footer {
+    background-color: #010e1e;
+    position: relative;
+}
+
+.card-footer h6 {
+    color: white;
+}

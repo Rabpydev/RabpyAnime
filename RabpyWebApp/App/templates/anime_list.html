@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    <title>Anime List</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Anime</h3>
+          <span class="breadcrumb"><a href="#">Home</a>  >  <a>Anime</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="single-product section">
+    <div class="container">
+        <h3>Anime list</h3>
+        <table id="tb-anime" class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Year</th>
+                <!-- <th scope="col">Score</th> -->
+              </tr>
+            </thead>
+            <tbody>
+                {% for anime in all_anime %}
+                    <tr>
+                        <td><img src="{{ anime.image.url }}" alt="Image" style="width: 70px; height: auto;"></td>
+                        <td><a href="anime/{{ anime.id }}">{{ anime.name }}</a></td>
+                        <td>{{ anime.description }}</td>
+                        <td>
+                          {% for genre in anime.genre.all %}
+                            {{ genre.name }}{% if not forloop.last %}, {% endif %}
+                          {% endfor %}
+                        </td>
+                        <td>{{ anime.year }}</td>
+                        <!-- <td>{{ anime.score }}</td> -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+{% endblock %}

@@ -12,8 +12,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>Is It Wrong to Try to Pick Up Girls in a Dungeon? IV</h3>
-          <span class="breadcrumb"><a href="#">Home</a>  >  <a href="#">Anime</a>  >  Is It Wrong to Try to Pick Up Girls in a Dungeon?</span>
+          <h3>{{ anime.name }}</h3>
+          <span class="breadcrumb"><a href="#">Home</a>  >  <a href="#">Anime</a>  >  {{ anime.name }} </span>
         </div>
       </div>
     </div>
@@ -24,26 +24,31 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="left-image">
-            <img src="{% static 'images/danmachi-ss4-p2.jpg '%}" alt="">
+            <!-- <img src="{% static 'images/danmachi-ss4-p2.jpg '%}" alt=""> -->
+            <img src="{{ anime.image.url }}" alt="" style="width: 500px; height: auto;">
           </div>
         </div>
         <div class="col-lg-6 align-self-center">
-          <h4>Is It Wrong to Try to Pick Up Girls in a Dungeon? IV</h4>
-          <h4>Score: <span class="price"><em></em>8.5</span></h4>
+          <h4>{{ anime.name }}</h4>
+          <h4>Score: <span class="price"><em></em>{{ anime.score }}</span></h4>
           <p>Intrepid adventurer Bell Cranel has leveled up, but he can’t rest on his dungeoneering laurels just yet. The Hestia Familia still has a long way to go before it can stand toe-to-toe with the other Familias of Orario — but before Bell can set out on his next mission, reports of a brutal murder rock the adventuring community! One of Bell’s trusted allies stands accused of the horrible crime, and it’s up to Bell and his friends to clear their name and uncover a nefarious plot brewing in the dungeon’s dark depths.</p>
-          <!-- <form id="qty" action="#">
-            <input type="qty" class="form-control" id="1" aria-describedby="quantity" placeholder="1">
-            <button type="submit"><i class="fa fa-shopping-bag"></i> ADD TO CART</button>
-          </form> -->
           <ul>
-            <li><span>Release:</span> 2022</li>
-            <li><span>Studio:</span> J.C.Staff</li>
-            <li><span>Episode:</span> 11</li>
-            <li><span>Country:</span> Japan</li>
-            <li><span>Source:</span> Light novel</li>
-            <li><span>Theme song:</span> 10/10</li>
-            <li><span>Status:</span> Finished</li>
-            <li><span>Genre:</span> <a href="#">Action</a>, <a href="#">Fantasy</a>, <a href="#">Dungeon</a></li>
+            <li><span>Release:</span> {{ anime.year }}</li>
+            <li><span>Studio:</span> {{ anime.studio }}</li>
+            <li><span>Category:</span> {{ anime.category }}</li>
+            <li><span>Nationality:</span> {{ anime.country }} </li>
+            <li><span>Source:</span> {{ anime.source }}</li>
+            <li><span>Status:</span> {{ anime.status }} </li>
+            <li><span>Genres:</span> 
+              {% for genre in anime.genre.all %}
+                {{ genre.name }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </li>
+            <li><span>Resouces:</span> 
+              {% for resource in anime.resourceanime_set.all %}
+                {{ resource.name }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </li>
           </ul>
         </div>
         <div class="col-lg-12">
@@ -100,46 +105,27 @@
             <a href="shop.html">View All</a>
           </div>
         </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Bell Cranell</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="{% static 'images/bell-cranel-1.jpg' %}" alt=""></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="owl-carousel owl-theme">
+
+        {% for character in anime.character_set.all %}
+        <div class="item">
+          <div class="card">
+            <div class="card-body">
+              <img src="{{ character.image.url }}" alt="" class="card-img-top" height="auto" width="auto">
+            </div>
+            <div class="card-footer">
+              <h6 class="text-center">{{ character.name }}</h6>
             </div>
           </div>
         </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Ryuu Lion</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="{% static 'images/ryu-lion-1.jpg' %}" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Ais Wallenstein</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="{% static 'images/ais-wallenstein-1.jpg' %}" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Hestia</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="{% static 'images/hestia-1.jpg' %}" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Welf Crozzo</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="{% static 'images/welf-crozzo-1.jpg' %}" alt=""></a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+
       </div>
     </div>
   </div>
