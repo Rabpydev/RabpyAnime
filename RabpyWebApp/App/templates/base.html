@@ -72,28 +72,38 @@
                         {% else %}
                           <li><a href="/">Home</a></li>
                         {% endif %}
-                        
-                        <li><a href="#">Manga</a></li>
 
                         {% if page == "anime" %}
                           <li><a href="/anime" class="active">Anime</a></li>
                         {% else %}
-                          <li><a href="/anime">Anime</a></li>
+                          <li><a href="{% url 'animeall' %}">Anime</a></li>
                         {% endif %}
                       
                         {% if page == "character" %}
                           <li><a href="/character" class="active">Character</a></li>
                         {% else %}
-                          <li><a href="/character">Character</a></li>
+                          <li><a href="{% url 'characterall' %}">Character</a></li>
                         {% endif %}
 
                         {% if page == "contact" %}
                           <li><a href="/contact" class="active">Contact Us</a></li>
                         {% else %}
-                          <li><a href="/contact">Contact Us</a></li>
+                          <li><a href="{% url 'contact' %}">Contact Us</a></li>
                         {% endif %}
 
-                        <li><a href="/admin/">Login</a></li>
+                        {% if user.is_authenticated %}
+                        <li>
+                          <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">
+                              <span>{{ user.username }} (Logout)</span>
+                            </button>
+                          </form>
+                        </li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+
                       </ul>   
                       <a class='menu-trigger'>
                           <span>Menu</span>

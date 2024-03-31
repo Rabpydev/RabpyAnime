@@ -23,5 +23,7 @@ from App.api import router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('users/', include("App_users.urls")),
     path('', include("App.urls")),
+
 ]
