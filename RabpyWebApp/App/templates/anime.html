@@ -114,16 +114,20 @@
       <div class="owl-carousel owl-theme">
 
         {% for character in anime.character_set.all %}
-        <div class="item">
-          <div class="card">
-            <div class="card-body">
-              <img src="{{ character.image.url }}" alt="" class="card-img-top" height="auto" width="auto">
+          {% if character.type == "Main" %}
+            <div class="item">
+              <div class="card">
+                <div class="card-body">
+                  <img src="{{ character.image.url }}" alt="" class="card-img-top" height="auto" width="auto" onclick="window.location.href='character/{{ character.id }}';">
+                </div>
+                <div class="card-footer">
+                  <h6 class="text-center">
+                    <a href="/character/{{ character.id }}" class="href">{{ character.name }}</a>
+                  </h6>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <h6 class="text-center">{{ character.name }}</h6>
-            </div>
-          </div>
-        </div>
+          {% endif %}
         {% endfor %}
 
       </div>
