@@ -3,7 +3,7 @@ from .models import Character
 from .serializer import CharacterSerializer
 
 class CharacterApiView(viewsets.ModelViewSet):
-    queryset = Character.objects.filter(gender='female')
+    queryset = Character.objects.filter(gender='male')
     serializer_class = CharacterSerializer
 
 router = routers.DefaultRouter()

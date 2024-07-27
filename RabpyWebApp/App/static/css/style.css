@@ -1118,7 +1118,7 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(../images/footer-bg.jpg);
-  min-height: 150px;
+  min-height: 50px; 
   border-radius: 45px 45px 0px 0px;
 }
 

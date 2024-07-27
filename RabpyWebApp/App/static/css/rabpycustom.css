@@ -5,15 +5,13 @@
 
 .card-body {
     position: relative;
-    height: 350px;
+    height: 200px;
 }
 
 .card-img-top {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: auto;
 }
 
 .card-footer {
@@ -23,4 +21,17 @@
 
 .card-footer a {
     color: white;
+}
+
+/* Dashboard */
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active  {
+    background-color: #010e1e; /* Semi-transparent for active tab */
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: white;
+}
+
+.nav-link {
+    color: grey;
 }

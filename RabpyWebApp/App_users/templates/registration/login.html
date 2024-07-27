@@ -3,67 +3,73 @@
 {% load static %}
 
 {% block title %}
-    <title>Login</title>
+<title>Login</title>
 {% endblock %}
 
 {% block content %}
 
-  <div class="page-heading header-text">
-    <div class="container">
-        <h3>Login page</h3>
-    </div>
+<div class="page-heading header-text">
+  <div class="container">
+    <h3>Login page</h3>
   </div>
+</div>
 
-  <div class="section categories related-games">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h6>Member account</h6>
-            <h2>Login</h2><br>
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <br>
-                <input type="submit" value="Login">
-            </form>
+<div class="section categories related-games">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-heading">
+          <h6>Member account</h6>
+          <h2>Login</h2><br>
+          <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
             <br>
-            <a href="{% url 'register' %}">Click here to Sign up</a>
-            
-            <style>
-                input[type="text"],
-                input[type="password"] {
-                    width: 100%;
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                }
-                
-                input[type="submit"] {
-                    background-color: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 5px;
-                    padding: 10px;
-                    cursor: pointer;
-                    width: 200px;
-                }
-                
-                input[type="submit"]:hover {
-                    background-color: #0056b3;
-                }
-            </style>
-            
-          </div>
-        </div>
+            <input type="submit" value="Login">
+          </form>
+          <br>
+          <a href="{% url 'register' %}">Click here to Sign up</a>
 
-        <div class="col-lg-4">
-            <div class="section-heading">
-            </div>
+          <style>
+            input[type="text"],
+            input[type="password"] {
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+
+            input[type="submit"] {
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              padding: 10px;
+              cursor: pointer;
+              width: 200px;
+            }
+
+            input[type="submit"]:hover {
+              background-color: #0056b3;
+            }
+          </style>
+
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-heading">
+          <div class="right-image">
+            <img src="{% static 'images/cha-hae-in-1.png' %}" alt="">
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 {% endblock %}

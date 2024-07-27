@@ -6,6 +6,10 @@ from django.http import Http404
 from App.models import Character
 from App.models import Anime
 
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import viewsets
+
 # Create your views here.
 
 # def anime(request):
